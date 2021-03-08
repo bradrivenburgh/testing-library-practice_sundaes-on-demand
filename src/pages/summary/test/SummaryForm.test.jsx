@@ -6,20 +6,20 @@ describe("SummaryForm", () => {
     render(<SummaryForm />);
   });
 
-  test("checkbox is unchecked and button is disabled by default", async () => {
+  test("checkbox is unchecked and button is disabled by default", () => {
     render(<SummaryForm />);
-    const checkbox = await screen.findByRole("checkbox", { name: "Agree" });
-    const button = await screen.findByRole("button", { name: "Submit" });
+    const checkbox = screen.getByRole("checkbox", { name: /terms and conditions/i });
+    const button = screen.getByRole("button", { name: /confirm order/i });
 
     // Checkbox should be unchecked and button disabled
     expect(checkbox).not.toBeChecked();
     expect(button).toBeDisabled();
   });
 
-  test("checking checkbox enables button, unchecking disables it", async () => {
+  test("checking checkbox enables button, unchecking disables it", () => {
     render(<SummaryForm />);
-    const checkbox = await screen.findByRole("checkbox", { name: "Agree" });
-    const button = await screen.findByRole("button", { name: "Submit" });
+    const checkbox = screen.getByRole("checkbox", { name: /terms and conditions/i });
+    const button = screen.getByRole("button", { name: /confirm order/i });
 
     fireEvent.click(checkbox);
     expect(button).toBeEnabled();
