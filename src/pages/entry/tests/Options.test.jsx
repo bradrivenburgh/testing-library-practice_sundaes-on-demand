@@ -5,7 +5,7 @@ describe("Options", () => {
   test("displays image for each scoop from server", async () => {
     render(<Options optionType="scoops" />);
 
-    // find the images
+    // find the images; use find[All]ByRole bc of async instead of get[All]ByRole
     const scoopImages = await screen.findAllByRole("img", { name: /scoop$/i });
     expect(scoopImages).toHaveLength(2);
 
