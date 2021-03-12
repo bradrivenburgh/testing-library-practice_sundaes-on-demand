@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import Options from "../Options";
+import {OrderDetailsProvider} from '../../../contexts/OrderDetails';
 
 describe("Options", () => {
   test("displays image for each scoop from server", async () => {
-    render(<Options optionType='scoops' />);
+    render(<Options optionType='scoops' />, { wrapper: OrderDetailsProvider });
 
     // find the images; use find[All]ByRole bc of async instead of get[All]ByRole
     const scoopImages = await screen.findAllByRole("img", { name: /scoop$/i });
