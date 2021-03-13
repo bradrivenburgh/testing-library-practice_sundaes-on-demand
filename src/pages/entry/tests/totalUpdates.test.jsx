@@ -1,8 +1,4 @@
-import {
-  findAllByRole,
-  render,
-  screen,
-} from "../../../test-utils/testing-library-utils";
+import { render, screen } from "../../../test-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 import Options from "../Options";
 
@@ -38,6 +34,26 @@ test("update toppings subtotal when toppings change", async () => {
     exact: false,
   });
   expect(toppingsSubtotal).toHaveTextContent("0.00");
+
+  /** How course does it */
+  
+  // const cherriesCheckbox = await screen.findByRole("checkbox", {
+  //   name: "Cherries",
+  // });
+  // userEvent.click(cherriesCheckbox);
+  // expect(toppingsSubtotal).toHaveTextContent("1.50");
+
+  // const hotFudgeCheckbox = await screen.findByRole("checkbox", {
+  //   name: "Hot fudge",
+  // });
+  // userEvent.click(hotFudgeCheckbox);
+  // expect(toppingsSubtotal).toHaveTextContent("3.00");
+
+  // userEvent.click(hotFudgeCheckbox);
+  // expect(toppingsSubtotal).toHaveTextContent("1.50");
+
+
+  /** My implementation */
 
   // make sure toppings options are unchecked
   const toppingsInputs = await screen.findAllByRole("checkbox");
