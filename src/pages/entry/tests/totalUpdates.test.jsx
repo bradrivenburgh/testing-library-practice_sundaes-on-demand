@@ -1,8 +1,4 @@
-import {
-  render,
-  screen,
-  waitFor,
-} from "../../../test-utils/testing-library-utils";
+import { render, screen } from "../../../test-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 import Options from "../Options";
 import OrderEntry from "../OrderEntry";
@@ -77,7 +73,6 @@ test("update toppings subtotal when toppings change", async () => {
 });
 
 describe("grand total", () => {
-
   test("updates properly if scoop is added first", async () => {
     render(<OrderEntry />);
     const grandTotal = screen.getByRole("heading", {
