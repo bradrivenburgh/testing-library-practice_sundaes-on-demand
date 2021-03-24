@@ -52,11 +52,19 @@ test("order phases for happy path", async () => {
   });
   userEvent.click(confirmOrderBtn);
 
+  // confirm "Loading" appears while posting to server
+  const loadingText = screen.getByText(/loading/i);
+  expect(loadingText).toBeInTheDocument();
+
   // confirm thank you header
   const thankYouHeader = await screen.findByRole("heading", {
     name: /thank you/i,
   });
   expect(thankYouHeader).toBeInTheDocument();
+
+  // confirm that "Loading" has disappeared
+  const notLoading = screen.queryByText(/loading/i);
+  expect(notLoading).not.toBeInTheDocument();
 
   // confirm order number on confirmation page
   const orderNumber = await screen.findByText(/order number/i);
