@@ -53,7 +53,7 @@ test("order phases for happy path", async () => {
   userEvent.click(confirmOrderBtn);
 
   // confirm thank you header
-  const thankYouHeader = await screen.findByRole("header", {
+  const thankYouHeader = await screen.findByRole("heading", {
     name: /thank you/i,
   });
   expect(thankYouHeader).toBeInTheDocument();
@@ -76,5 +76,5 @@ test("order phases for happy path", async () => {
   expect(newToppingsTotal).toBeInTheDocument();
 
   await screen.findByRole("spinbutton", { name: "Vanilla" });
-  await screen.findByRole("spinbutton", { name: "Cherries" });
+  await screen.findByRole("checkbox", { name: "Cherries" });
 });
